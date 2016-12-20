@@ -67,14 +67,18 @@ public class Game
 		return playerScore;
 	}
 	
-	Map < String , Integer > getScoreboard ()
+	void getScoreboard ()
 	{
-		return scoreboard;
+		for (Map.Entry<String, Integer> entry : scoreboard.entrySet()) 
+		{
+		    System.out.println(entry.getKey() + entry.getValue());
+		}
 	}
 	
-	void updateScoreboard ()
+	void updateScoreboard (String username)
 	{
-		
+		scoreboard.put(username, playerScore);
 	}
 	
 }
+
