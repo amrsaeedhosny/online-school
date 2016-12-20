@@ -1,3 +1,4 @@
+import java.util.Map;
 import java.util.Scanner;
 
 public class GameInterface 
@@ -13,24 +14,52 @@ public class GameInterface
 	{
 		Scanner in = new Scanner(System.in);
 		
-		int choice = 0; 
+		int helpChoice = 0; 
 		
 		help();
 		playGame();
 		
 		do
 		{
-			choice = in.nextInt();
+			helpChoice = in.nextInt();
 			
-			if ( choice == 1 )
+			if ( helpChoice == 1 )
 			{
 				System.out.println(game.getHelp());
 			}
 			
-		} while ( choice != 2 );
+		} while ( helpChoice != 2 );
 		
 		
-		game.play();
+		
+		for ( int i = 0 ; i < game.questions.size() ; i++ )
+		{
+			System.out.println(game.questions.get(i).header);
+			for ( int j = 0 ; j < game.questions.get(i).choices.size() ; j++ )
+			{
+				System.out.print(j+1 + " - ");
+				System.out.println(game.questions.get(i).choices.get(j));
+			}
+			
+			if ( !game.questions.get(i).hint.equals(null) )
+			{
+				String choice;
+				showHint();
+				choice = in.next();
+				if ( choice.equals("Y") )
+				{
+					System.out.println(game.questions.get(i).hint);
+				}
+			}
+			
+			int choice = in.nextInt();
+			
+			if ( game.questions.get(i).choices.get(choice-1).equals(game.questions.get(i).solution) )
+			{
+				game.playerScore += 10;
+			}
+		}
+		
 		
 		in.close();
 	}
@@ -47,14 +76,21 @@ public class GameInterface
 	
 	void showHint()
 	{
-		System.out.print("Show Hint");
+		System.out.print("Do you want to show hint> (Y/N): ");
 	}
 	
-	void submitAnswers()
+	void showScore ()
 	{
-		System.out.println("Submit");
+		System.out.println("Your Score is: " + game.getPlayerScore() );
 	}
 	
-	
+	void showScoreBoard()
+	{
+		System.out.println("Score Board");
+		for (Map.Entry<String, Integer> entry : game.scoreboard.entrySet()) 
+		{
+		    System.out.println(entry.getKey() + entry.getValue());
+		}
+	}
 
 }

@@ -37,19 +37,12 @@ public class GameManager
 	void runGameInterface ( String gameName, AccountManager accountManager, String username )
 	{
 		Game game = gameModel.retrieveGame(gameName);
-		GameInterface gameInterface = new GameInterface(game);
-		
-		// Will be running until the user exits or finishes the game
-		
-		gameInterface.run();
-		
-		int playerScore = game.getPlayerScore();
-		System.out.println(playerScore);
-		
-		accountManager.addScore(username,playerScore);
+		GameInterface gameInterface = new GameInterface(game);		
+		gameInterface.run();		
+		accountManager.addScore(username,game.playerScore);
+		gameInterface.showScore();
 		game.updateScoreboard(username);
-		game.getScoreboard();
-
+		gameInterface.showScoreBoard();
 	}
 	
 	
