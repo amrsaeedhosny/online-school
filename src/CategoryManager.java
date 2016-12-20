@@ -1,21 +1,33 @@
-import java.util.ArrayList;
-
-public class CategoryManager 
+public class GameManager 
 {
-	CategoryModel categoryModel;
+	GameModel gameModel;
+	int latestEarnedScore;
 	
-	CategoryManager ( CategoryModel categoryModel )
+	GameManager (GameModel gameModel )
 	{
-		this.categoryModel = categoryModel;
+		this.gameModel = gameModel;
 	}
 	
-	ArrayList <Game> getCategoryGames ( String categoryName )
+	void validateFormContent ( GameForm gameForm )
 	{
-		return categoryModel.retrieveCategoryGames(categoryName);
+		
 	}
 	
-	void addGameToCategory ( String categoryName, Game game )
+	void runGameInterface ( String gameName )
 	{
-		categoryModel.insertGame(categoryName, game);
+		Game game = gameModel.retrieveGame(gameName);
+		GameInterface gameInterface = new GameInterface(game);
+		
+		// Will be running until the user exits or finishes the game
+		
+		gameInterface.run();
+		
+		latestEarnedScore = game.getPlayerScore();
+		System.out.println(latestEarnedScore);		
+	}
+	
+	void addLatestEarnedScoreToAccount ( AccountManager accountManager , String username )
+	{
+		accountManager.addScore(username, latestEarnedScore);
 	}
 }
