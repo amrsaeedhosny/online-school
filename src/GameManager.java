@@ -1,8 +1,6 @@
-
 public class GameManager 
 {
 	GameModel gameModel;
-	int latestEarnedScore;
 	
 	GameManager (GameModel gameModel )
 	{
@@ -14,7 +12,7 @@ public class GameManager
 		
 	}
 	
-	void runGameInterface ( String gameName )
+	void runGameInterface ( String gameName, AccountManager accountManager, String username )
 	{
 		Game game = gameModel.retrieveGame(gameName);
 		GameInterface gameInterface = new GameInterface(game);
@@ -23,13 +21,13 @@ public class GameManager
 		
 		gameInterface.run();
 		
-		latestEarnedScore = game.getPlayerScore();
-		System.out.println(latestEarnedScore);		
-	}
-	
-	void addLatestEarnedScoreToAccount ( AccountManager accountManager , String username )
-	{
-		accountManager.addScore(username, latestEarnedScore);
+		int playerScore = game.getPlayerScore();
+		System.out.println(playerScore);
+		
+		accountManager.addScore(username,playerScore);
+		game.updateScoreboard(username);
+		game.getScoreboard();
+
 	}
 	
 	
