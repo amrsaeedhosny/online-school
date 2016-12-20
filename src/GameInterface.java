@@ -34,6 +34,7 @@ public class GameInterface
 		
 		for ( int i = 0 ; i < game.questions.size() ; i++ )
 		{
+			int questionPoints = 10;
 			System.out.println(game.questions.get(i).header);
 			for ( int j = 0 ; j < game.questions.get(i).choices.size() ; j++ )
 			{
@@ -49,6 +50,7 @@ public class GameInterface
 				if ( choice.equals("Y") )
 				{
 					System.out.println(game.questions.get(i).hint);
+					questionPoints -= (questionPoints/5);
 				}
 			}
 			
@@ -56,7 +58,7 @@ public class GameInterface
 			
 			if ( game.questions.get(i).choices.get(choice-1).equals(game.questions.get(i).solution) )
 			{
-				game.playerScore += 10;
+				game.playerScore += questionPoints;
 			}
 		}
 		
