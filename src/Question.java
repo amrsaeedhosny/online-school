@@ -34,7 +34,7 @@ public class Question
 	{
 		for ( int i = 0 ; i < 4 ; i++ )
 		{
-			this.choices.set(0, choices.get(i));
+			this.choices.set(i, choices.get(i));
 		}
 	}
 	
