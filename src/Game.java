@@ -35,7 +35,7 @@ public class Game
 				System.out.println(questions.get(i).choices.get(j));
 			}
 			
-			if ( questions.get(i).hint != null )
+			if ( !questions.get(i).hint.equals(null) )
 			{
 				String choice;
 				System.out.println("Do you want to show hint? (Y/N): ");
@@ -81,4 +81,3 @@ public class Game
 	}
 	
 }
-

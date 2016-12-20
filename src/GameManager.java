@@ -1,3 +1,4 @@
+
 public class GameManager 
 {
 	GameModel gameModel;
@@ -5,6 +6,12 @@ public class GameManager
 	GameManager (GameModel gameModel )
 	{
 		this.gameModel = gameModel;
+	}
+	
+	void createGameForm ()
+	{
+		GameForm gameForm = new GameForm();
+		
 	}
 	
 	void validateFormContent ( GameForm gameForm )
@@ -22,7 +29,7 @@ public class GameManager
 		gameInterface.run();
 		
 		int playerScore = game.getPlayerScore();
-		System.out.println(playerScore);
+		System.out.println(playerScore); // edit
 		
 		accountManager.addScore(username,playerScore);
 		game.updateScoreboard(username);
