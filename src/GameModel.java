@@ -21,5 +21,19 @@ public class GameModel
 		}
 		return game;
 	}
+	
+	boolean checkExist ( String gameName )
+	{
+		for(int i = 0 ; i< games.size() ; i++)
+		{
+			if( gameName.equals( games.get(i).getName() ) )
+			{
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	
 
 }

@@ -8,15 +8,29 @@ public class GameManager
 		this.gameModel = gameModel;
 	}
 	
-	void createGameForm ()
+	void createGameForm ( AccountManager accountManager , String username , CategoryManager categoryManager , String categoryName )
 	{
 		GameForm gameForm = new GameForm();
+		validateFormContent( gameForm );
+		
+		Game game = new Game ();
+		game.name = gameForm.name;
+		game.type = gameForm.type;
+		game.questions = gameForm.questions;
+		game.help = gameForm.help;
+		
+		accountManager.addGameToAccount(username, game);
+		categoryManager.addGameToCategory(categoryName, game);
 		
 	}
 	
 	void validateFormContent ( GameForm gameForm )
 	{
-		
+		while ( gameModel.checkExist(gameForm.name) )
+		{
+			System.out.println("Game name already exists!");
+			gameForm.insertName();
+		}
 	}
 	
 	void runGameInterface ( String gameName, AccountManager accountManager, String username )
