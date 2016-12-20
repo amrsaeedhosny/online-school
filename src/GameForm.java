@@ -41,19 +41,21 @@ public class GameForm
 		{
 			Question question = new Question(type);
 			System.out.print("Enter question header: ");
-			question.header = in.nextLine();
+			question.setHeader(in.nextLine());
 			
 			if ( type.equals("MCQ") )
 			{
+				ArrayList <String> choices = new ArrayList <String>();
 				for ( int i = 0 ; i < 4 ; i++ )
 				{
 					System.out.print( "Enter cohice number " + (i+1) + " : " );
-					question.choices.add(in.nextLine());
+					choices.add(in.nextLine());
 				}
+				question.setChoices(choices);
 			}
 			
 			System.out.print("Enter correct answer: ");
-			question.solution = in.nextLine();
+			question.setSolution(in.nextLine());
 			
 			String hintChoice;
 			System.out.print("Do you want to add some hint ? (Y/N) : ");
@@ -61,7 +63,7 @@ public class GameForm
 			if ( hintChoice.equals("Y") )
 			{
 				System.out.print("Enter hint statement: ");
-				question.hint = in.nextLine();
+				question.setHint(in.nextLine());
 			}
 			
 			questions.add(question);
