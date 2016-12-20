@@ -19,6 +19,7 @@ public class GameManager
 		game.questions = gameForm.questions;
 		game.help = gameForm.help;
 		
+		gameModel.insertGame(game);
 		accountManager.addGameToAccount(username, game);
 		categoryManager.addGameToCategory(categoryName, game);
 		
@@ -43,7 +44,7 @@ public class GameManager
 		gameInterface.run();
 		
 		int playerScore = game.getPlayerScore();
-		System.out.println(playerScore); // edit
+		System.out.println(playerScore);
 		
 		accountManager.addScore(username,playerScore);
 		game.updateScoreboard(username);

@@ -8,5 +8,17 @@ public class TournamentModel
 	{
 		tournaments.add(tournament);
 	}
+	
+	boolean checkTournamentExist ( String TournamentName )
+	{
+		for(int i = 0 ; i< tournaments.size() ; i++)
+		{
+			if ( TournamentName.equals( tournaments.get(i).name ) )
+			{
+				return true;
+			}
+		}
+		  return false;
+	}
 
 }

@@ -6,6 +6,6 @@ public class Tournament
 	String type;
 	ArrayList <Question> questions = new ArrayList <Question> ();
 	String date;
-	double duration;
-
+	String startTime;
+	String finishTime;
 }
