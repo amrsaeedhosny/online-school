@@ -1,31 +1,43 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Home {
 	
 
 	public static void main(String[] args) 
 	{	
-		// Create ArrayLists of accounts here
+		/*ArrayList<Category> categories = new ArrayList<Category>();
+		SetCategoriesName(categories);*/
+		int choose = 0;
+		System.out.println("1- New user ? Sign up");
+		System.out.println("2- Already have account ? login ");
+		Scanner in = new Scanner(System.in);
+		choose = in.nextInt();
+		AccountModel accountM = new AccountModel();
+		AccountManager account = new AccountManager(accountM);
+		
+		if(choose == 1){
+			account.createRegistrationForm();
+		}
+		if(choose == 2){
+	//		account;
+		}
 		
 		
-		// Fill all of the ArrayLists in the appropriate model/database
-		
-		AccountModel accountModel = new AccountModel();
-		CategoryModel categoryModel = new CategoryModel();
-		GameModel gameModel = new GameModel();
-		TournamentModel tournamentModel = new TournamentModel();
-				
-		// Create managers to deal with our models/databases
-		
-		AccountManager accountManager = new AccountManager(accountModel);
-		CategoryManager categoryManager = new CategoryManager(categoryModel);
-		GameManager gameManager = new GameManager(gameModel);
-		TournamentManager tournamentManager = new TournamentManager(tournamentModel);
-		
-		// After that you should use the controllers only
 		
 	}
 	
 	
-	// Our Buttons that calls a specific functions
+	 // Our Buttons that calls a specific functions
+	
+	static void SetCategoriesName(ArrayList<Category>categories)
+	 {
+	  categories.get(0).setName("Math");
+	  categories.get(1).setName("Science");
+	  categories.get(2).setName("Programming");
+	  categories.get(3).setName("Language");
+	 }
+	
 	
 	void showCategoryGames ()
 	{
