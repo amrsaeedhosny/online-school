@@ -104,5 +104,28 @@ public class AccountModel
 	{
 		students.add(student);
 	}
+	
+	public  boolean SignedIn(String email , String password)
+	{
+		
+		for(int i = 0 ; i < teachers.size() ; i++)
+		{
+			if(email.equals(teachers.get(i).getEmail()) && password.equals(teachers.get(i).getPassword()))
+			{
+				return true;
+			}
+		}
+	
+		for(int i = 0 ; i < students.size() ; i++)
+		{
+			if(email.equals(students.get(i).getEmail()) && password.equals(students.get(i).getPassword()))
+			{
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
 
 }
