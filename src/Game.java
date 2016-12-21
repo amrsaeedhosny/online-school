@@ -16,8 +16,9 @@ public class Game
 		
 	}
 
-	public Game(String name, String type, ArrayList<Question> questions, Map<String, Integer> scoreboard,
-			int playerScore, String help) {
+	public Game(String name, String type, ArrayList<Question> questions, 
+			Map<String, Integer> scoreboard, int playerScore, String help) 
+	{
 		
 		this.name = name;
 		this.type = type;
@@ -35,11 +36,6 @@ public class Game
 	String getHelp ()
 	{
 		return help;
-	}
-	
-	String getHint ( int questionNumber )
-	{
-		return questions.get(questionNumber).hint;
 	}
 	
 	int getPlayerScore ()

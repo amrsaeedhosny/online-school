@@ -6,11 +6,13 @@ public class CategoryModel
 	
 	
 	
-	public ArrayList<Category> getCategories() {
+	public ArrayList<Category> getCategories() 
+	{
 		return categories;
 	}
 
-	public void setCategories(ArrayList<Category> categories) {
+	public void setCategories(ArrayList<Category> categories) 
+	{
 		this.categories = categories;
 	}
 

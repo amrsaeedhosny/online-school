@@ -43,24 +43,24 @@ public class Account
 	{
 		this.gender = gender;
 	}
-	
-	void addScore( int score )
-	{
-		this.score += score;
-	}
-	
-	String getPassword() {
-		return password;
-	}
 
 	String getUsername ()
 	{
 		return username;
 	}
 	
+	String getPassword() 
+	{
+		return password;
+	}
+	
 	String getEmail ()
 	{
 		return email;
 	}
-
+	
+	void addScore( int score )
+	{
+		this.score += score;
+	}
 }

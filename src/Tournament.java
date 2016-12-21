@@ -9,40 +9,52 @@ public class Tournament
 	String startTime;
 	String finishTime;
 	
-	public String getName() {
+	public String getName() 
+	{
 		return name;
 	}
-	public void setName(String name) {
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
-	public String getType() {
+	public String getType() 
+	{
 		return type;
 	}
-	public void setType(String type) {
+	public void setType(String type) 
+	{
 		this.type = type;
 	}
-	public ArrayList<Question> getQuestions() {
+	public ArrayList<Question> getQuestions() 
+	{
 		return questions;
 	}
-	public void setQuestions(ArrayList<Question> questions) {
+	public void setQuestions(ArrayList<Question> questions) 
+	{
 		this.questions = questions;
 	}
-	public String getDate() {
+	public String getDate() 
+	{
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(String date) 
+	{
 		this.date = date;
 	}
-	public String getStartTime() {
+	public String getStartTime() 
+	{
 		return startTime;
 	}
-	public void setStartTime(String startTime) {
+	public void setStartTime(String startTime)
+	{
 		this.startTime = startTime;
 	}
-	public String getFinishTime() {
+	public String getFinishTime() 
+	{
 		return finishTime;
 	}
-	public void setFinishTime(String finishTime) {
+	public void setFinishTime(String finishTime)
+	{
 		this.finishTime = finishTime;
 	}
 }

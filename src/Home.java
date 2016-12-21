@@ -16,13 +16,13 @@ public class Home {
 	static String password = null;
 	static String username = null;
 	static String categoryName = null;
-	static String GameName = null;
+	static String gameName = null;
 	static Scanner scan = new Scanner(System.in);
 	
 	public static void main(String[] args) throws IOException 
 	{	
 		ArrayList<Category> categories = new ArrayList<Category>();
-		SetCategoriesName(categories);
+		setCategoriesName(categories);
 		categoryModel.setCategories(categories);
 		
 		//int choose = 0;
@@ -45,7 +45,7 @@ public class Home {
 		view();
 		
 			
-		if(accountManager.IfTeacher(mail , password))
+		if(accountManager.checkIfTeacher(mail , password))
 		{
 			System.out.println("1- Create Tournament  2- Create Game  3- play");
 			choose = scan.nextInt();
@@ -67,9 +67,9 @@ public class Home {
 			    categoryName = scan.next();
 				showCategoryGames();
 				System.out.println("Enter Game's Name: ");
-				GameName = scan.next();
+				gameName = scan.next();
 				//clearScreen();
-				showGame(GameName);
+				showGame(gameName);
 			}       	
 		}
 		
@@ -79,9 +79,9 @@ public class Home {
 		    categoryName = scan.next();
 			showCategoryGames();
 			System.out.println("Enter Game's Name: ");
-			GameName = scan.next();
+			gameName = scan.next();
 			//clearScreen();
-			showGame(GameName);
+			showGame(gameName);
 		}
 		clearScreen();
 		view();
@@ -148,7 +148,7 @@ public class Home {
 			 System.out.println("Incorrect Email or Password please try again");
 		    warn = false;
 		}
-		while(!accountManager.accountModel.SignedIn(mail , password));
+		while(!accountManager.accountModel.checkAccountExist(mail , password));
 	}
 	
 	static void view()
@@ -181,7 +181,7 @@ public class Home {
 
 	}
 	
-	static void SetCategoriesName(ArrayList<Category>categories)
+	static void setCategoriesName(ArrayList<Category>categories)
 	{
 		for(int i = 0 ; i < 4 ; i++)
 		{
@@ -194,9 +194,10 @@ public class Home {
 	    categories.get(3).setName("Languages");
 	}
 	
-	public static void clearScreen() {  
+	public static void clearScreen() 
+	{  
 		for(int i=0;i<10;++i)System.out.println();
-	   }
+	}
 	
 
 }

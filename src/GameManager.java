@@ -42,7 +42,7 @@ public class GameManager
 		Game NewGame = new Game(game.name, game.type , game.questions , game.scoreboard , 0 , game.help);
 		GameInterface gameInterface = new GameInterface(NewGame);		
 		gameInterface.run();		
-		accountManager.addScore(username,NewGame.playerScore);
+		accountManager.addScoreToAccount(username,NewGame.playerScore);
 		gameInterface.showScore();
 		NewGame.updateScoreboard(username);
 		gameInterface.showScoreBoard();

@@ -95,17 +95,7 @@ public class AccountModel
 		return false;
 	}
 	
-	void addTeacher ( Teacher teacher )
-	{
-		teachers.add(teacher);
-	}
-	
-	void addStudent ( Student student )
-	{
-		students.add(student);
-	}
-	
-	public  boolean SignedIn(String email , String password)
+	boolean checkAccountExist(String email , String password)
 	{
 		
 		for(int i = 0 ; i < teachers.size() ; i++)
@@ -126,6 +116,15 @@ public class AccountModel
 		
 		return false;
 	}
-
+	
+	void addTeacher ( Teacher teacher )
+	{
+		teachers.add(teacher);
+	}
+	
+	void addStudent ( Student student )
+	{
+		students.add(student);
+	}
 
 }

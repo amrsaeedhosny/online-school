@@ -16,6 +16,7 @@ public class RegistrationForm
 
 	RegistrationForm ()
 	{
+		showRegistrationFormHeader();
 		insertType();
 		insertFirstName();
 		insertLastName();
@@ -29,7 +30,7 @@ public class RegistrationForm
 		insertEducationalStage();
 	}
 	
-	void showGameHeader ()
+	void showRegistrationFormHeader ()
 	{
 		System.out.println(" ----------------------------------------- ");
 		System.out.println("             REGISTRATION FORM             ");

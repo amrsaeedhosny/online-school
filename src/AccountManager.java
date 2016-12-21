@@ -68,17 +68,17 @@ public class AccountManager
 		accountModel.insertGame(username, game);
 	}
 	
-	void addScore ( String username, int score )
+	void addScoreToAccount ( String username, int score )
 	{
 		accountModel.insertScore(username, score);
 		
 	}
 	
-	boolean IfTeacher(String  Email , String Password)
+	boolean checkIfTeacher(String  email , String password)
 	{
 		for(int i = 0 ; i < accountModel.teachers.size() ; i++)
 		{
-			if(Email.equals(accountModel.teachers.get(i).getEmail()) && Password.equals(accountModel.teachers.get(i).getPassword()))
+			if(email.equals(accountModel.teachers.get(i).getEmail()) && password.equals(accountModel.teachers.get(i).getPassword()))
 				{
 				  return true;
 				}
