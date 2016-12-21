@@ -47,7 +47,7 @@ public class Home {
 			
 		if(accountManager.checkIfTeacher(mail , password))
 		{
-			System.out.println("1- Create Tournament  2- Create Game  3- play");
+			System.out.println("1- Create Tournament  2-else");
 			choose = scan.nextInt();
 			
 			if(choose == 1)
@@ -55,22 +55,23 @@ public class Home {
 				//clearScreen();
 				createTournament();
 			}
-			
-			else if(choose == 2)
+			System.out.println("Choose Category ");
+		    categoryName = scan.next();
+		    showCategoryGames();
+		    System.out.println("1- play   2- Create Game");
+		    int choice = scan.nextInt();
+			if(choice == 2)
 			{
-				//clearScreen();
+				clearScreen();
 				createGame();
 			}
-			else if(choose == 3)
+		if(choice == 1)
 			{
-			    System.out.println("Choose Category ");
-			    categoryName = scan.next();
-				showCategoryGames();
 				System.out.println("Enter Game's Name: ");
 				gameName = scan.next();
 				//clearScreen();
 				showGame(gameName);
-			}       	
+			}     	
 		}
 		
 		else
@@ -109,9 +110,9 @@ public class Home {
 	
 	static void createGame ()
 	{
-		System.out.println("Choose Category ");
-		 categoryName = scan.next();
-		 showCategoryGames();
+		//System.out.println("Choose Category ");
+		 //categoryName = scan.next();
+		 //showCategoryGames();
 		gameManager.createGameForm(accountManager, username, categoryManager, categoryName);
 	}
 	
