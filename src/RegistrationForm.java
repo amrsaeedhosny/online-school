@@ -29,13 +29,23 @@ public class RegistrationForm
 		insertEducationalStage();
 	}
 	
+	void showGameHeader ()
+	{
+		System.out.println(" ----------------------------------------- ");
+		System.out.println("             REGISTRATION FORM             ");
+		System.out.println(" ----------------------------------------- ");
+	}
+	
 	void insertType()
 	{
 		int choice = 0;
 		while ( choice != 1 && choice != 2 )
 		{
-			System.out.println("1- Register as a teacher.");
-			System.out.println("2- Register as a student.");
+			System.out.println(" ----------------------------------");
+			System.out.println("      1- Register as a teacher     ");
+			System.out.println("      2- Register as a student     ");
+			System.out.println(" ----------------------------------");
+			System.out.print(" > Choice:    ");
 			choice = in.nextInt();
 			in.nextLine();
 		}
@@ -52,37 +62,37 @@ public class RegistrationForm
 	
 	void insertFirstName ()
 	{
-		System.out.print("First Name: ");
+		System.out.print(" > First Name:     ");
 		firstName = in.nextLine();
 	}
 	
 	void insertLastName ()
 	{
-		System.out.print("Last Name: ");
+		System.out.print(" > Last Name:     ");
 		lastName = in.nextLine();
 	}
 	
 	void insertUsername ()
 	{
-		System.out.print("Username: ");
+		System.out.print(" > Username:     ");
 		username = in.nextLine();
 	}
 	
 	void insertEmail ()
 	{
-		System.out.print("Email: ");
+		System.out.print(" > Email:     ");
 		email = in.nextLine();
 	}
 	
 	void insertBirthday ()
 	{
-		System.out.print("Birthday: ");
+		System.out.print(" > Birthday:    ");
 		birthday = in.nextLine();
 	}
 	
 	void insertPassword ()
 	{
-		System.out.print("Password: ");
+		System.out.print(" > Password:    ");
 		password = in.next();
 	}
 	
@@ -91,8 +101,11 @@ public class RegistrationForm
 		int choice = 0;
 		while ( choice != 1 && choice != 2 )
 		{
-			System.out.println("1- Male.");
-			System.out.println("2- Femal.");
+			System.out.println(" -------------- ");
+			System.out.println("   1- Male      ");
+			System.out.println("   2- Femal     ");
+			System.out.println(" -------------- ");
+			System.out.print(" > Choice:    ");
 			choice = in.nextInt();
 			in.nextLine();
 		}
@@ -111,7 +124,8 @@ public class RegistrationForm
 	{
 		if ( type.equals("Teacher") )
 		{
-			System.out.print("Professional Reference ( e.g. LinkedIn Account Link ): ");
+			
+			System.out.print(" > Professional Reference :     ");
 			professionalReference = in.nextLine();
 		}
 	}
@@ -120,25 +134,29 @@ public class RegistrationForm
 	{
 		if ( type.equals("Student") )
 		{
-			System.out.print("Educational Stage: ");
+			System.out.print(" > Educational Stage:    ");
 			educationalStage = in.nextLine();
 		}
 	}
 	
 	void usernameExistMessage ()
 	{
-		System.out.println("This username already exists!");
-		System.out.println("Please enter your username,");
+		System.out.println(" --------------------------- ");
+		System.out.println("   Username already exists!  ");
+		System.out.println(" --------------------------- ");
 	}
 	
 	void emailExistMessage ()
 	{
-		System.out.println("This email already exists!");
-		System.out.println("Please enter your email address,");
+		System.out.println(" --------------------------- ");
+		System.out.println("    Email already exists!    ");
+		System.out.println(" --------------------------- ");
 	}
 	
 	void createdSuccessfullyMessage ()
 	{
-		System.out.println("Your account has been created successfully!");
+		System.out.println(" --------------------------------------------- ");
+		System.out.println("  Your account has been created successfully!  ");
+		System.out.println(" --------------------------------------------  ");
 	}
 }

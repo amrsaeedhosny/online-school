@@ -13,6 +13,7 @@ public class TournamentForm
 	
 	TournamentForm ()
 	{
+		showFormHeader();
 		insertName();
 		insertType();
 		insertQuestions();
@@ -21,15 +22,22 @@ public class TournamentForm
 		insertFinishTime();
 	}
 	
+	void showFormHeader ()
+	{
+		System.out.println(" ----------------------------------------- ");
+		System.out.println("              TOURNAMENT FORM              ");
+		System.out.println(" ----------------------------------------- ");
+	}
+	
 	void insertName ()
 	{		
-		System.out.print("Enter Tournament Name: ");
+		System.out.print(" > Tournament Name:    ");
 		name = in.nextLine();
 	}
 	
 	void insertType ()
 	{
-		System.out.print("Enter Tournament Type (MCQ/TF): ");
+		System.out.print(" > Tournament Type (MCQ/TF):    ");
 		type = in.nextLine();
 	}
 	
@@ -37,15 +45,18 @@ public class TournamentForm
 	{
 		int choice = 0;
 		
-		System.out.println("1- Add question");
-		System.out.println("2- Finish");
+		System.out.println(" ------------------------ ");
+		System.out.println("     1- Add question      ");
+		System.out.println("     2- Finish            ");
+		System.out.println(" ------------------------ ");
+		System.out.print(" > Choice:     ");
 		choice = in.nextInt();
 		in.nextLine();
 		
 		while ( choice != 2 )
 		{
 			Question question = new Question(type);
-			System.out.print("Enter question header: ");
+			System.out.print(" > Question header:    ");
 			question.setHeader(in.nextLine());
 			
 			if ( type.equals("MCQ") )
@@ -53,19 +64,22 @@ public class TournamentForm
 				ArrayList <String> choices = new ArrayList <String>();
 				for ( int i = 0 ; i < 4 ; i++ )
 				{
-					System.out.print( "Enter cohice number " + (i+1) + " : " );
+					System.out.print(" > Choice #" + (i+1) + ":    " );
 					choices.add(in.nextLine());
 				}
 				question.setChoices(choices);
 			}
 			
-			System.out.print("Enter correct answer: ");
+			System.out.print(" > Correct answer:    ");
 			question.setSolution(in.nextLine());
 			
 			questions.add(question);
 				
-			System.out.println("1- Add question");
-			System.out.println("2- Finish");
+			System.out.println(" ------------------------ ");
+			System.out.println("     1- Add question      ");
+			System.out.println("     2- Finish            ");
+			System.out.println(" ------------------------ ");
+			System.out.print(" > Choice:     ");
 			choice = in.nextInt();
 			in.nextLine();
 		}
@@ -74,36 +88,40 @@ public class TournamentForm
 	
 	void insertDate ()
 	{
-		System.out.print("Enter date: ");
+		System.out.print(" > Date:    ");
 		date = in.nextLine();
 	}
 
 	void insertStartTime ()
 	{
-		System.out.print("Enter start time: ");
+		System.out.print(" > Start time:    ");
 		startTime = in.nextLine();
 	}
 	
 	void insertFinishTime()
 	{
-		System.out.print("Enter finish time: ");
+		System.out.print(" > Finish time:    ");
 		finishTime = in.nextLine();
 	}
 	
 	void gameNameExistsMessage ()
 	{
-		System.out.println("Tournament name already exists!");
-		System.out.println("Please enter your tournament name,");
+		System.out.println(" --------------------------------- ");
+		System.out.println("  Tournament name already exists!  ");
+		System.out.println(" --------------------------------- ");
 	}
 	
 	void incorrectDateMessage ()
 	{
-		System.out.println("Incorrect date!");
-		System.out.println("Please enter your tournament date,");
+		System.out.println(" --------------------------------- ");
+		System.out.println("          Incorrect date!          ");
+		System.out.println(" --------------------------------- ");
 	}
 	
 	void tournamentCreatedSuccessfullyMessage ()
 	{
-		System.out.println("Your tournament has been created successfully!");
+		System.out.println(" -------------------------------------------------- ");
+		System.out.println("   Your tournament has been created successfully!   ");
+		System.out.println(" -------------------------------------------------- ");
 	}
 }
