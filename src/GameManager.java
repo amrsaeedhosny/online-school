@@ -1,4 +1,3 @@
-
 public class GameManager 
 {
 	GameModel gameModel;

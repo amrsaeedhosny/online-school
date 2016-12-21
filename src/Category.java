@@ -20,6 +20,16 @@ public class Category
 		return name;
 	}
 	
+	
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setGames(ArrayList<Game> games) {
+		this.games = games;
+	}
+
 	void addGame ( Game game )
 	{
 		games.add(game);

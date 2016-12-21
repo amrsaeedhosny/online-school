@@ -1,4 +1,3 @@
-
 public class Account 
 {
 	String firstName;
@@ -50,6 +49,10 @@ public class Account
 		this.score += score;
 	}
 	
+	String getPassword() {
+		return password;
+	}
+
 	String getUsername ()
 	{
 		return username;

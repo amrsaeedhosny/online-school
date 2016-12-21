@@ -4,6 +4,16 @@ public class CategoryModel
 {
 	ArrayList <Category> categories = new ArrayList <Category>();
 	
+	
+	
+	public ArrayList<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(ArrayList<Category> categories) {
+		this.categories = categories;
+	}
+
 	void insertGame ( String name , Game game )
 	{
 		for ( int i = 0 ; i < categories.size() ; i++ )
