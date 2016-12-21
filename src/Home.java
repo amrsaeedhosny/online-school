@@ -169,7 +169,10 @@ public class Home {
 	          return accountManager.accountModel.teachers.get(i).getUsername();
             }
 			
-			else if(mail.equals(accountManager.accountModel.students.get(i).getEmail()))
+		}
+		
+		for(int i = 0 ; i < accountManager.accountModel.students.size(); i++){
+		if(mail.equals(accountManager.accountModel.students.get(i).getEmail()))
             {
 	          return accountManager.accountModel.students.get(i).getUsername();
             }
