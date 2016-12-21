@@ -73,7 +73,7 @@ public class GameInterface
 		}
 		
 		
-		in.close();
+	//	in.close();
 	}
 	
 	void showGameHeader ()

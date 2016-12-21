@@ -17,19 +17,23 @@ public class Home {
 	static String username = null;
 	static String categoryName = null;
 	static String GameName = null;
-	static Scanner in = new Scanner(System.in);
+	static Scanner scan = new Scanner(System.in);
 	
 	public static void main(String[] args) throws IOException 
 	{	
 		ArrayList<Category> categories = new ArrayList<Category>();
 		SetCategoriesName(categories);
 		categoryModel.setCategories(categories);
-		while(true){
-		int choose = 0;
+		
+		//int choose = 0;
+		
+		while(true){	
+	    int choose = 0;
 		System.out.println("1- New user ? Sign up");
 		System.out.println("2- Already have account ? login ");
 		
-		choose = in.nextInt();
+		if(scan.hasNext())
+		choose = scan.nextInt();
 		
 		
 		if(choose == 1){
@@ -40,15 +44,18 @@ public class Home {
 		clearScreen();
 		view();
 		
+			
 		if(accountManager.IfTeacher(mail , password))
 		{
 			System.out.println("1- Create Tournament  2- Create Game  3- play");
-			choose = in.nextInt();
+			choose = scan.nextInt();
+			
 			if(choose == 1)
 			{
 				//clearScreen();
 				createTournament();
 			}
+			
 			else if(choose == 2)
 			{
 				//clearScreen();
@@ -57,10 +64,10 @@ public class Home {
 			else if(choose == 3)
 			{
 			    System.out.println("Choose Category ");
-			    categoryName = in.next();
+			    categoryName = scan.next();
 				showCategoryGames();
 				System.out.println("Enter Game's Name: ");
-				GameName = in.next();
+				GameName = scan.next();
 				//clearScreen();
 				showGame(GameName);
 			}       	
@@ -69,17 +76,17 @@ public class Home {
 		else
 		{
 			System.out.println("Choose Category ");
-		    categoryName = in.next();
+		    categoryName = scan.next();
 			showCategoryGames();
 			System.out.println("Enter Game's Name: ");
-			GameName = in.next();
+			GameName = scan.next();
 			//clearScreen();
 			showGame(GameName);
 		}
 		clearScreen();
 		view();
 		publishTournament();
-	 }
+	  }
 	}
 	
 	
@@ -103,7 +110,7 @@ public class Home {
 	static void createGame ()
 	{
 		System.out.println("Choose Category ");
-		 categoryName = in.next();
+		 categoryName = scan.next();
 		 showCategoryGames();
 		gameManager.createGameForm(accountManager, username, categoryManager, categoryName);
 	}
@@ -132,9 +139,11 @@ public class Home {
 		do
 		{
 			System.out.println("Email: ");
-			mail = in.next();
+			if(scan.hasNext())
+			mail = scan.next();
 			System.out.println("Password: ");
-			password = in.next();
+			if(scan.hasNext())
+			password = scan.next();
 			if (!warn)
 			 System.out.println("Incorrect Email or Password please try again");
 		    warn = false;
@@ -158,6 +167,11 @@ public class Home {
 			if(mail.equals(accountManager.accountModel.teachers.get(i).getEmail()))
             {
 	          return accountManager.accountModel.teachers.get(i).getUsername();
+            }
+			
+			else if(mail.equals(accountManager.accountModel.students.get(i).getEmail()))
+            {
+	          return accountManager.accountModel.students.get(i).getUsername();
             }
 		}
 		return null;
