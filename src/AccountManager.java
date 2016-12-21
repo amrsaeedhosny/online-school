@@ -1,4 +1,3 @@
-
 public class AccountManager 
 {
 	AccountModel accountModel;
@@ -73,6 +72,19 @@ public class AccountManager
 	{
 		accountModel.insertScore(username, score);
 		
+	}
+	
+	boolean IfTeacher(String  Email , String Password)
+	{
+		for(int i = 0 ; i < accountModel.teachers.size() ; i++)
+		{
+			if(Email.equals(accountModel.teachers.get(i).getEmail()) && Password.equals(accountModel.teachers.get(i).getPassword()))
+				{
+				  return true;
+				}
+		}
+		
+		return false;
 	}
 	
 	
