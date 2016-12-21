@@ -46,12 +46,12 @@ public class Home {
 			choose = in.nextInt();
 			if(choose == 1)
 			{
-				clearScreen();
+				//clearScreen();
 				createTournament();
 			}
 			else if(choose == 2)
 			{
-				clearScreen();
+				//clearScreen();
 				createGame();
 			}
 			else if(choose == 3)
@@ -61,7 +61,7 @@ public class Home {
 				showCategoryGames();
 				System.out.println("Enter Game's Name: ");
 				GameName = in.next();
-				clearScreen();
+				//clearScreen();
 				showGame(GameName);
 			}       	
 		}
@@ -73,7 +73,7 @@ public class Home {
 			showCategoryGames();
 			System.out.println("Enter Game's Name: ");
 			GameName = in.next();
-			clearScreen();
+			//clearScreen();
 			showGame(GameName);
 		}
 		clearScreen();
@@ -87,7 +87,12 @@ public class Home {
 	 // Our Buttons that calls a specific functions
 	static void showCategoryGames ()
 	{
-		categoryManager.getCategoryGames(categoryName);
+		ArrayList<Game> categoriesGames = new ArrayList<Game>();
+		categoriesGames = categoryManager.getCategoryGames(categoryName);
+		
+		for(int i = 0 ; i < categoriesGames.size() ; i++)
+			System.out.print(categoriesGames.get(i).getName() + " ");
+		System.out.println();
 	}
 	
 	static void showGame( String gameName )
@@ -138,6 +143,7 @@ public class Home {
 		}
 		while(!accountManager.accountModel.SignedIn(mail , password));
 	}
+	
 	static void view()
 	{
 		for(int i = 0 ; i < categoryManager.categoryModel.categories.size() ; i++)
@@ -174,7 +180,7 @@ public class Home {
 	}
 	
 	public static void clearScreen() {  
-		for(int i=0;i<50;++i)System.out.println();
+		for(int i=0;i<10;++i)System.out.println();
 	   }
 	
 
