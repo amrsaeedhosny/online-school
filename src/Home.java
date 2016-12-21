@@ -117,13 +117,11 @@ public class Home {
 	{
 		for(int i  = 0 ; i < tournamentManager.tournamentModel.tournaments.size() ; i++)
 		{
-			double start = Double.parseDouble(tournamentManager.tournamentModel.tournaments.get(i).getStartTime());
-			double finish = Double.parseDouble(tournamentManager.tournamentModel.tournaments.get(i).getFinishTime());
-			double duration = finish - start;
 			
 			System.out.println(tournamentManager.tournamentModel.tournaments.get(i).getName() + "   Date: " 
 		    +tournamentManager.tournamentModel.tournaments.get(i).getDate() + "  at Time: " +
-		    tournamentManager.tournamentModel.tournaments.get(i).getStartTime() + " for: " + duration);
+		    tournamentManager.tournamentModel.tournaments.get(i).getStartTime() + " to: " +
+		    tournamentManager.tournamentModel.tournaments.get(i).getFinishTime());
 			System.out.println();
 		}
 	}
