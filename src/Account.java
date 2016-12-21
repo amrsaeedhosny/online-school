@@ -55,5 +55,9 @@ public class Account
 		return username;
 	}
 	
+	String getEmail ()
+	{
+		return email;
+	}
 
 }

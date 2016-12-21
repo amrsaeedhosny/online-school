@@ -51,9 +51,58 @@ public class AccountModel
 		}
 	}
 	
-	void createAccount ()
+	boolean checkUsernameExist ( String username )
 	{
+		for ( int i = 0 ; i < teachers.size() ; i++ )
+		{
+			if ( teachers.get(i).getUsername().equals(username) )
+			{
+				return true;
+			}
+		}
+				
+		for ( int i = 0 ; i < students.size(); i++ )
+		{
+			if ( students.get(i).getUsername().equals(username) )
+			{
+				return true;
+			}
+			
+		}
 		
+		return false;
+	}
+	
+	boolean checkEmailExist ( String email )
+	{
+		for ( int i = 0 ; i < teachers.size() ; i++ )
+		{
+			if ( teachers.get(i).getEmail().equals(email) )
+			{
+				return true;
+			}
+		}
+				
+		for ( int i = 0 ; i < students.size(); i++ )
+		{
+			if ( students.get(i).getEmail().equals(email) )
+			{
+				return true;
+			}
+			
+		}
+		
+		return false;
+	}
+	
+	void addTeacher ( Teacher teacher )
+	{
+		teachers.add(teacher);
+	}
+	
+	void addStudent ( Student student )
+	{
+		students.add(student);
 	}
 
 }

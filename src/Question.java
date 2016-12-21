@@ -20,7 +20,7 @@ public class Question
 			choices.add("True");
 			choices.add("False");
 		}
-		hint = null;
+		hint = "NO HINT";
 	}
 	
 	void setHeader ( String header )

@@ -36,6 +36,7 @@ public class GameForm
 		System.out.println("1- Add question");
 		System.out.println("2- Finish");
 		choice = in.nextInt();
+		in.nextLine();
 		
 		while ( choice != 2 )
 		{
@@ -59,7 +60,7 @@ public class GameForm
 			
 			String hintChoice;
 			System.out.print("Do you want to add some hint ? (Y/N) : ");
-			hintChoice = in.next();
+			hintChoice = in.nextLine();
 			if ( hintChoice.equals("Y") )
 			{
 				System.out.print("Enter hint statement: ");
@@ -71,6 +72,7 @@ public class GameForm
 			System.out.println("1- Add question");
 			System.out.println("2- Finish");
 			choice = in.nextInt();
+			in.nextLine();
 		}
 		
 	}
@@ -79,6 +81,17 @@ public class GameForm
 	{
 		System.out.print("Eneter help statement: ");
 		help = in.nextLine();
+	}
+	
+	void gameNameExistsMessage ()
+	{
+		System.out.println("Game name already exists!");
+		System.out.println("Please enter your game name,");
+	}
+	
+	void gameCreatedSuccessfullyMessage ()
+	{
+		System.out.println("Your game has been created successfully!");
 	}
 
 }

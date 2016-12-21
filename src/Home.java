@@ -22,10 +22,6 @@ public class Home {
 		
 		// After that you should use the controllers only
 		
-		
-	
-		
-
 	}
 	
 	

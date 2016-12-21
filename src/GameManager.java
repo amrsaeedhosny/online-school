@@ -22,14 +22,14 @@ public class GameManager
 		gameModel.insertGame(game);
 		accountManager.addGameToAccount(username, game);
 		categoryManager.addGameToCategory(categoryName, game);
-		
+		gameForm.gameCreatedSuccessfullyMessage();
 	}
 	
 	void validateFormContent ( GameForm gameForm )
 	{
 		while ( gameModel.checkExist(gameForm.name) )
 		{
-			System.out.println("Game name already exists!");
+			gameForm.gameNameExistsMessage();
 			gameForm.insertName();
 		}
 	}

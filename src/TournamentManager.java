@@ -26,19 +26,20 @@ public class TournamentManager
 		
 		accountManager.addTournamentToAccount(username, tournament);
 		tournamentModel.insertTournament(tournament);
+		tournamentForm.tournamentCreatedSuccessfullyMessage();
 	}
 	
 	void validateFormContent ( TournamentForm tournamentForm )
 	{
 		while ( tournamentModel.checkTournamentExist(tournamentForm.name) )
 		{
-				System.out.println("Tournament name already exists!");
+				tournamentForm.gameNameExistsMessage();
 				tournamentForm.insertName();
 		}
 		
 		while(checkDate(tournamentForm.date))
 		{
-				System.out.println("Incorrect Date!");
+				tournamentForm.incorrectDateMessage();
 				tournamentForm.insertDate();
 		}
 		

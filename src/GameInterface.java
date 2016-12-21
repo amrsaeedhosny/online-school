@@ -22,6 +22,7 @@ public class GameInterface
 		do
 		{
 			helpChoice = in.nextInt();
+			in.nextLine();
 			
 			if ( helpChoice == 1 )
 			{
@@ -38,25 +39,27 @@ public class GameInterface
 			System.out.println(game.questions.get(i).header);
 			for ( int j = 0 ; j < game.questions.get(i).choices.size() ; j++ )
 			{
-				System.out.print(j+1 + " - ");
+				System.out.print(j+1 + "- ");
 				System.out.println(game.questions.get(i).choices.get(j));
 			}
 			
-			if ( !game.questions.get(i).hint.equals(null) )
+			if ( !( game.questions.get(i).hint.equals("NO HINT") ) )
 			{
-				String choice;
+				String hintChoice;
 				showHint();
-				choice = in.next();
-				if ( choice.equals("Y") )
+				hintChoice = in.nextLine();
+				System.out.println(hintChoice);
+				if ( hintChoice.equals("Y") )
 				{
 					System.out.println(game.questions.get(i).hint);
 					questionPoints -= (questionPoints/5);
 				}
 			}
+			System.out.println("Enter your solution");
+			String solutionChoice;
+			solutionChoice = in.nextLine();
 			
-			int choice = in.nextInt();
-			
-			if ( game.questions.get(i).choices.get(choice-1).equals(game.questions.get(i).solution) )
+			if ( solutionChoice.equals(game.questions.get(i).solution) )
 			{
 				game.playerScore += questionPoints;
 			}
@@ -78,7 +81,7 @@ public class GameInterface
 	
 	void showHint()
 	{
-		System.out.print("Do you want to show hint> (Y/N): ");
+		System.out.print("Do you want to show hint? (Y/N): ");
 	}
 	
 	void showScore ()
@@ -91,7 +94,7 @@ public class GameInterface
 		System.out.println("Score Board");
 		for (Map.Entry<String, Integer> entry : game.scoreboard.entrySet()) 
 		{
-		    System.out.println(entry.getKey() + entry.getValue());
+		    System.out.println(entry.getKey() + " " + entry.getValue());
 		}
 	}
 

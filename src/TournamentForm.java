@@ -40,6 +40,7 @@ public class TournamentForm
 		System.out.println("1- Add question");
 		System.out.println("2- Finish");
 		choice = in.nextInt();
+		in.nextLine();
 		
 		while ( choice != 2 )
 		{
@@ -66,6 +67,7 @@ public class TournamentForm
 			System.out.println("1- Add question");
 			System.out.println("2- Finish");
 			choice = in.nextInt();
+			in.nextLine();
 		}
 		
 	}
@@ -87,5 +89,21 @@ public class TournamentForm
 		System.out.print("Enter finish time: ");
 		finishTime = in.nextLine();
 	}
-
+	
+	void gameNameExistsMessage ()
+	{
+		System.out.println("Tournament name already exists!");
+		System.out.println("Please enter your tournament name,");
+	}
+	
+	void incorrectDateMessage ()
+	{
+		System.out.println("Incorrect date!");
+		System.out.println("Please enter your tournament date,");
+	}
+	
+	void tournamentCreatedSuccessfullyMessage ()
+	{
+		System.out.println("Your tournament has been created successfully!");
+	}
 }
