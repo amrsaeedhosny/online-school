@@ -1,67 +1,181 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Home {
 	
-
-	public static void main(String[] args) 
+	static AccountModel accountModel = new AccountModel();
+	static AccountManager accountManager = new AccountManager(accountModel);
+	static CategoryModel categoryModel = new CategoryModel();
+	static CategoryManager categoryManager = new CategoryManager(categoryModel);
+	static TournamentModel tournamentModel = new TournamentModel();
+	static TournamentManager tournamentManager = new TournamentManager(tournamentModel);
+	static GameModel gameModel = new GameModel();
+	static GameManager gameManager = new GameManager(gameModel);
+	static String mail = null;	
+	static String password = null;
+	static String username = null;
+	static String categoryName = null;
+	static String GameName = null;
+	static Scanner in = new Scanner(System.in);
+	
+	public static void main(String[] args) throws IOException 
 	{	
-		/*ArrayList<Category> categories = new ArrayList<Category>();
-		SetCategoriesName(categories);*/
+		ArrayList<Category> categories = new ArrayList<Category>();
+		SetCategoriesName(categories);
+		categoryModel.setCategories(categories);
+		while(true){
 		int choose = 0;
 		System.out.println("1- New user ? Sign up");
 		System.out.println("2- Already have account ? login ");
-		Scanner in = new Scanner(System.in);
+		
 		choose = in.nextInt();
-		AccountModel accountM = new AccountModel();
-		AccountManager account = new AccountManager(accountM);
+		
 		
 		if(choose == 1){
-			account.createRegistrationForm();
+			accountManager.createRegistrationForm();
 		}
-		if(choose == 2){
-	//		account;
+		validation();
+		username = getusername(mail);
+		clearScreen();
+		view();
+		
+		if(accountManager.IfTeacher(mail , password))
+		{
+			System.out.println("1- Create Tournament  2- Create Game  3- play");
+			choose = in.nextInt();
+			if(choose == 1)
+			{
+				clearScreen();
+				createTournament();
+			}
+			else if(choose == 2)
+			{
+				clearScreen();
+				createGame();
+			}
+			else if(choose == 3)
+			{
+			    System.out.println("Choose Category ");
+			    categoryName = in.next();
+				showCategoryGames();
+				System.out.println("Enter Game's Name: ");
+				GameName = in.next();
+				clearScreen();
+				showGame(GameName);
+			}       	
 		}
 		
-		
-		
+		else
+		{
+			System.out.println("Choose Category ");
+		    categoryName = in.next();
+			showCategoryGames();
+			System.out.println("Enter Game's Name: ");
+			GameName = in.next();
+			clearScreen();
+			showGame(GameName);
+		}
+		clearScreen();
+		view();
+		publishTournament();
+	 }
 	}
+	
 	
 	
 	 // Our Buttons that calls a specific functions
+	static void showCategoryGames ()
+	{
+		categoryManager.getCategoryGames(categoryName);
+	}
+	
+	static void showGame( String gameName )
+	{
+		gameManager.runGameInterface(gameName, accountManager, username);
+	}
+	
+	static void createGame ()
+	{
+		System.out.println("Choose Category ");
+		 categoryName = in.next();
+		 showCategoryGames();
+		gameManager.createGameForm(accountManager, username, categoryManager, categoryName);
+	}
+	
+	static void createTournament ()
+	{
+		tournamentManager.createTournamentForm(accountManager, username);	
+	}
+	
+	static void publishTournament()
+	{
+		for(int i  = 0 ; i < tournamentManager.tournamentModel.tournaments.size() ; i++)
+		{
+			double start = Double.parseDouble(tournamentManager.tournamentModel.tournaments.get(i).getStartTime());
+			double finish = Double.parseDouble(tournamentManager.tournamentModel.tournaments.get(i).getFinishTime());
+			double duration = finish - start;
+			
+			System.out.println(tournamentManager.tournamentModel.tournaments.get(i).getName() + "   Date: " 
+		    +tournamentManager.tournamentModel.tournaments.get(i).getDate() + "  at Time: " +
+		    tournamentManager.tournamentModel.tournaments.get(i).getStartTime() + " for: " + duration);
+			System.out.println();
+		}
+	}
+	
+	static void validation()
+	{
+		boolean warn = true;
+		do
+		{
+			System.out.println("Email: ");
+			mail = in.next();
+			System.out.println("Password: ");
+			password = in.next();
+			if (!warn)
+			 System.out.println("Incorrect Email or Password please try again");
+		    warn = false;
+		}
+		while(!accountManager.accountModel.SignedIn(mail , password));
+	}
+	static void view()
+	{
+		for(int i = 0 ; i < categoryManager.categoryModel.categories.size() ; i++)
+		{
+			System.out.print(categoryManager.categoryModel.categories.get(i).getName()+ " ");
+		}
+		System.out.println();
+	}
+	
+	static String getusername(String mail)
+	{
+		for(int i = 0 ; i < accountManager.accountModel.teachers.size(); i++)
+		{
+			if(mail.equals(accountManager.accountModel.teachers.get(i).getEmail()))
+            {
+	          return accountManager.accountModel.teachers.get(i).getUsername();
+            }
+		}
+		return null;
+
+	}
 	
 	static void SetCategoriesName(ArrayList<Category>categories)
-	 {
-	  categories.get(0).setName("Math");
-	  categories.get(1).setName("Science");
-	  categories.get(2).setName("Programming");
-	  categories.get(3).setName("Language");
-	 }
-	
-	
-	void showCategoryGames ()
 	{
-		
+		for(int i = 0 ; i < 4 ; i++)
+		{
+			Category temp = new Category();
+			categories.add(temp);
+	    }
+	    categories.get(0).setName("Math");
+	    categories.get(1).setName("Science");
+	    categories.get(2).setName("Programming");
+	    categories.get(3).setName("Languages");
 	}
 	
-	void showGame( String gameName )
-	{
-		
-	}
+	public static void clearScreen() {  
+		for(int i=0;i<50;++i)System.out.println();
+	   }
 	
-	void createGame ()
-	{
-		
-	}
-	
-	void createTournament ()
-	{
-		
-	}
-	
-	void publishTournament()
-	{
-		
-	}
 
 }
