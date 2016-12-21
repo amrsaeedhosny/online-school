@@ -52,11 +52,18 @@ public class TournamentManager
 		Calendar cal = Calendar.getInstance();
 		
 		String CurrentDate = (dateFormat.format(cal.getTime()).toString());
+		String[] currentdate = CurrentDate.split("/");
+		String[] tournamentdate = date.split("/");
 		
-		if(date.compareTo(CurrentDate) == -1)
-		{
+		if(currentdate[2].compareTo(tournamentdate[2]) == 1)
 			return true;
-		}
+		
+		else if (currentdate[1].compareTo(tournamentdate[1]) == 1 && currentdate[2].equals(tournamentdate[2]) )
+		 return true;
+		
+		else if (currentdate[0].compareTo(tournamentdate[0]) == 1 && currentdate[1].equals(tournamentdate[1]) && currentdate[2].equals(tournamentdate[2]) )
+			 return true;
+		
 	    
 		return false;
 	}
