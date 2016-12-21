@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Map;
+
 public class GameManager 
 {
 	GameModel gameModel;
@@ -12,7 +15,7 @@ public class GameManager
 		GameForm gameForm = new GameForm();
 		validateFormContent( gameForm );
 		
-		Game game = new Game ();
+		Game game = new Game();
 		game.name = gameForm.name;
 		game.type = gameForm.type;
 		game.questions = gameForm.questions;
@@ -36,11 +39,12 @@ public class GameManager
 	void runGameInterface ( String gameName, AccountManager accountManager, String username )
 	{
 		Game game = gameModel.retrieveGame(gameName);
-		GameInterface gameInterface = new GameInterface(game);		
+		Game NewGame = new Game(game.name, game.type , game.questions , game.scoreboard , 0 , game.help);
+		GameInterface gameInterface = new GameInterface(NewGame);		
 		gameInterface.run();		
-		accountManager.addScore(username,game.playerScore);
+		accountManager.addScore(username,NewGame.playerScore);
 		gameInterface.showScore();
-		game.updateScoreboard(username);
+		NewGame.updateScoreboard(username);
 		gameInterface.showScoreBoard();
 	}
 	

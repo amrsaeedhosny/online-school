@@ -11,6 +11,22 @@ public class Game
 	int playerScore;
 	String help;
 	
+	
+	public Game() {
+		
+	}
+
+	public Game(String name, String type, ArrayList<Question> questions, Map<String, Integer> scoreboard,
+			int playerScore, String help) {
+		
+		this.name = name;
+		this.type = type;
+		this.questions = questions;
+		this.scoreboard = scoreboard;
+		this.playerScore = playerScore;
+		this.help = help;
+	}
+
 	String getName ()
 	{
 		return name;

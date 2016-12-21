@@ -68,7 +68,9 @@ public class GameInterface
 			
 			if ( solutionChoice.equals(game.questions.get(i).solution) )
 			{
+				//int temp = game.playerScore;
 				game.playerScore += questionPoints;
+				//game.playerScore -= temp; 
 			}
 		}
 		
