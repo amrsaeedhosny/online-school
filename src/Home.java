@@ -55,6 +55,7 @@ public class Home {
 				//clearScreen();
 				createTournament();
 			}
+			
 			System.out.println("Choose Category ");
 		    categoryName = scan.next();
 		    showCategoryGames();
@@ -96,7 +97,7 @@ public class Home {
 	static void showCategoryGames ()
 	{
 		ArrayList<Game> categoriesGames = new ArrayList<Game>();
-		categoriesGames = categoryManager.getCategoryGames(categoryName);
+		categoriesGames = categoryManager.categoryModel.retrieveCategoryGames(categoryName);
 		
 		for(int i = 0 ; i < categoriesGames.size() ; i++)
 			System.out.print(categoriesGames.get(i).getName() + " ");
